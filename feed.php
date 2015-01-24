@@ -14,7 +14,7 @@ $source=file_get_contents($url, false, $headers);
 if ($url=='https://www.lostfilm.tv/rssdd.xml') {
 $source=str_replace('windows-1251','utf-8',$source); 
 $source=iconv("WINDOWS-1251", "UTF-8", $source);
-$source=str_replace('<link>http://lostfilm.tv/download.php',"<link>http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?url=http://lostfilm.tv/download.php",$source);
+$source=str_replace('<link>https://www.lostfilm.tv/download.php',"<link>http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?url=http://lostfilm.tv/download.php",$source);
 $source=str_replace('&amp;',"!",$source);}
 
 if (strpos(strtolower($url), '.torrent')>0) {
