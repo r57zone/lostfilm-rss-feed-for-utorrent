@@ -1,17 +1,17 @@
 ﻿<?php 
 $url=htmlspecialchars($_GET['url']);
 
-if ($url=='') $url='https://www.lostfilm.tv/rssdd.xml';
+if ($url=='') $url='http://www.lostfilm.tv/rssdd.xml';
 
 //Заголовки для загрузки торрентов
 $headers_a=array('http'=>array('method'=>"GET",'header'=>"Cookie: uid=0;pass=0;usess=0\r\n"));
 $headers=stream_context_create($headers_a);
 
-if ($url!='https://www.lostfilm.tv/rssdd.xml') $url=str_replace('!',"&amp;",$url);
+if ($url!='http://www.lostfilm.tv/rssdd.xml') $url=str_replace('!',"&amp;",$url);
 $source=file_get_contents($url, false, $headers);
 
 //Обновление ленты
-if ($url=='https://www.lostfilm.tv/rssdd.xml') {
+if ($url=='http://www.lostfilm.tv/rssdd.xml') {
 $source=str_replace('windows-1251','utf-8',$source); 
 $source=iconv("WINDOWS-1251", "UTF-8", $source);
 $source=str_replace('<link>https://www.lostfilm.tv/download.php',"<link>http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?url=http://lostfilm.tv/download.php",$source);
