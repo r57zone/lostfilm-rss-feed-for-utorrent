@@ -1,8 +1,6 @@
 <?php 
 	$url=htmlspecialchars($_GET['url']);
 	if ($url=='') $url='http://retre.org/rssdd.xml';
-
-
 	//Заголовки для загрузки торрентов
 	$headers_a=array('http'=>array('method'=>"GET",'header'=>"Cookie: uid=0;pass=0;usess=0\r\n"));
 	$headers=stream_context_create($headers_a);
@@ -35,6 +33,6 @@
 		readfile($filename);
 		//Удаляем торрент
 		unlink($_SERVER['DOCUMENT_ROOT'].'/'.$filename);
-	exit; 
+		exit; 
 	} else echo $source;
 ?>
