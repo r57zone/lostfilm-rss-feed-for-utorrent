@@ -4,7 +4,7 @@
 	//Заголовки для загрузки торрентов
 	$headers_a=array('http'=>array('method'=>"GET",'header'=>"Cookie: uid=0;pass=0;usess=0\r\n"));
 	$headers=stream_context_create($headers_a);
-	if ($url!='http://www.lostfilm.tv/rssdd.xml') $url=str_replace('!',"&amp;",$url);
+	//if ($url!='http://www.lostfilm.tv/rssdd.xml') $url=str_replace('!',"&amp;",$url);
 	$source=file_get_contents($url, false, $headers);
 	//Обновление ленты
 	if ($url=='http://retre.org/rssdd.xml') {
